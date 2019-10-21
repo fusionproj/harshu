@@ -1,4 +1,11 @@
-<?php include('header.php'); ?> 
+<?php include('header.php'); 
+
+include('database.php');
+include('sqlQuery.php');
+$result = $conn->query($getAllProjects);
+
+$conn->close();
+?> 
     <section id="inner-headline">
       <div class="container">
         <div class="row">
@@ -86,6 +93,34 @@
               </p> 
             </div>
         </div>
+
+
+        <p>
+              <h5><b>Projects Details</b></h5>  
+            </p>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Name</th>
+        <th>Address</th>
+
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+<?php 
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+    
+        echo "<tr><td>" . $row["id"]. "</td> <td>" . $row["owner_name"]. "</td><td>" . $row["address"]. "</td><td>". date_format(date_create($row["date"]),"d-m-Y"). "</td></tr>";
+      
+    
+    }
+}?>
+    </tbody>
+  </table>
       </div>
     </section>
     

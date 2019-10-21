@@ -1,4 +1,5 @@
-<?php include('header.php'); ?> 
+<?php include('header.php');
+?> 
     <section id="inner-headline">
       <div class="container">
         <div class="row">
